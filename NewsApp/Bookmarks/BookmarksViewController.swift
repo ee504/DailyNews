@@ -9,13 +9,14 @@ import UIKit
 
 class BookmarksViewController: UIViewController {
 
+    @IBOutlet weak var bookmarksTableView: UITableView!
+    let REUSE = "BookmarksCustomCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
     /*
     // MARK: - Navigation
 
@@ -26,4 +27,24 @@ class BookmarksViewController: UIViewController {
     }
     */
 
+}
+
+extension BookmarksViewController:UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return 15
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            var cell = tableView.dequeueReusableCell(withIdentifier: REUSE)
+            if cell == nil {
+                cell = BookmarksCustomCell.createCell()
+            }
+            return cell!
+        }
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: REUSE_ID, for: indexPath) as! BookmarksCustomCell
+//        return cell
+//    }
 }
