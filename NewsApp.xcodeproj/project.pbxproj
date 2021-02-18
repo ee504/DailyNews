@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84426C3425DE7C950055227B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 84426C3325DE7C950055227B /* Alamofire */; };
+		84426C3B25DE7FE60055227B /* DailyNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84426C3A25DE7FE60055227B /* DailyNewsViewController.swift */; };
+		84426C4525DEAB3E0055227B /* DailyNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84426C4325DEAB3E0055227B /* DailyNews.storyboard */; };
 		8459B63D25DD7EBD0062FA03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459B63C25DD7EBD0062FA03 /* AppDelegate.swift */; };
 		8459B63F25DD7EBD0062FA03 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459B63E25DD7EBD0062FA03 /* SceneDelegate.swift */; };
 		8459B64125DD7EBD0062FA03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459B64025DD7EBD0062FA03 /* ViewController.swift */; };
@@ -17,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84426C3A25DE7FE60055227B /* DailyNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNewsViewController.swift; sourceTree = "<group>"; };
+		84426C4425DEAB3E0055227B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = NewsApp/Base.lproj/DailyNews.storyboard; sourceTree = "<group>"; };
 		8459B63925DD7EBD0062FA03 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8459B63C25DD7EBD0062FA03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8459B63E25DD7EBD0062FA03 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,12 +38,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84426C3425DE7C950055227B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84426C4025DEAA180055227B /* DailyNews */ = {
+			isa = PBXGroup;
+			children = (
+				84426C3A25DE7FE60055227B /* DailyNewsViewController.swift */,
+				84426C4325DEAB3E0055227B /* DailyNews.storyboard */,
+			);
+			path = DailyNews;
+			sourceTree = "<group>";
+		};
 		8459B63025DD7EBD0062FA03 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +73,7 @@
 		8459B63B25DD7EBD0062FA03 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				84426C4025DEAA180055227B /* DailyNews */,
 				8459B63C25DD7EBD0062FA03 /* AppDelegate.swift */,
 				8459B63E25DD7EBD0062FA03 /* SceneDelegate.swift */,
 				8459B64025DD7EBD0062FA03 /* ViewController.swift */,
@@ -87,6 +103,9 @@
 			dependencies = (
 			);
 			name = NewsApp;
+			packageProductDependencies = (
+				84426C3325DE7C950055227B /* Alamofire */,
+			);
 			productName = NewsApp;
 			productReference = 8459B63925DD7EBD0062FA03 /* NewsApp.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +133,9 @@
 				Base,
 			);
 			mainGroup = 8459B63025DD7EBD0062FA03;
+			packageReferences = (
+				84426C3225DE7C950055227B /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 8459B63A25DD7EBD0062FA03 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -131,6 +153,7 @@
 				8459B64C25DD7EBF0062FA03 /* LaunchScreen.storyboard in Resources */,
 				8459B64925DD7EBF0062FA03 /* Assets.xcassets in Resources */,
 				8459B64425DD7EBD0062FA03 /* Main.storyboard in Resources */,
+				84426C4525DEAB3E0055227B /* DailyNews.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8459B64125DD7EBD0062FA03 /* ViewController.swift in Sources */,
+				84426C3B25DE7FE60055227B /* DailyNewsViewController.swift in Sources */,
 				8459B63D25DD7EBD0062FA03 /* AppDelegate.swift in Sources */,
 				8459B64725DD7EBD0062FA03 /* NewsApp.xcdatamodeld in Sources */,
 				8459B63F25DD7EBD0062FA03 /* SceneDelegate.swift in Sources */,
@@ -171,6 +195,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		84426C4325DEAB3E0055227B /* DailyNews.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84426C4425DEAB3E0055227B /* Base */,
+			);
+			name = DailyNews.storyboard;
+			sourceTree = "<group>";
+		};
 		8459B64225DD7EBD0062FA03 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -364,6 +396,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84426C3225DE7C950055227B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84426C3325DE7C950055227B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84426C3225DE7C950055227B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8459B64525DD7EBD0062FA03 /* NewsApp.xcdatamodeld */ = {

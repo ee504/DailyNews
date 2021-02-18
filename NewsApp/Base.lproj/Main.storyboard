@@ -18,7 +18,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="nWp-Ad-Akx" kind="relationship" relationship="viewControllers" id="vNe-6d-duo"/>
+                        <segue destination="Yid-Bx-YNI" kind="relationship" relationship="viewControllers" id="vNe-6d-duo"/>
                         <segue destination="ISU-1B-jir" kind="relationship" relationship="viewControllers" id="a46-Rz-aNk"/>
                         <segue destination="RNJ-tY-bxb" kind="relationship" relationship="viewControllers" id="NPB-fF-38e"/>
                     </connections>
@@ -26,23 +26,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JWU-Ec-0Xv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1384" y="-911"/>
-        </scene>
-        <!--Daily News-->
-        <scene sceneID="L7z-A2-a16">
-            <objects>
-                <navigationController id="nWp-Ad-Akx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Daily News" image="globe" catalog="system" id="zxN-iM-s1V"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="woW-f6-hda">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="EEh-x9-TpM" kind="relationship" relationship="rootViewController" id="qWt-fs-DH2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6tl-ZV-gLf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2207" y="-94"/>
         </scene>
         <!--Bookmarks-->
         <scene sceneID="gQE-UW-UCV">
@@ -77,30 +60,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gn8-8L-Mjb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-601" y="-94"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Oqw-v5-Jhn">
-            <objects>
-                <viewController id="EEh-x9-TpM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KFD-Ge-q0N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Daily" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJ5-LU-3KS">
-                                <rect key="frame" x="151" y="420" width="113" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="1wK-08-Gnc"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="euk-Rx-wWc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Khp-Vj-EZ8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2207" y="619"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Tqs-90-pyM">
@@ -150,11 +109,20 @@
             </objects>
             <point key="canvasLocation" x="-601" y="619"/>
         </scene>
+        <!--DailyNews-->
+        <scene sceneID="W54-wT-fV7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DailyNews" id="Yid-Bx-YNI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="FKy-AN-GhS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1d3-Br-maY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2059" y="-319"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
-        <image name="globe" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
