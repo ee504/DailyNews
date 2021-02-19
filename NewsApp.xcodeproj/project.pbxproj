@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8440E74125DF146F009204CE /* ExtentionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440E73F25DF146F009204CE /* ExtentionCell.swift */; };
+		8440E74225DF146F009204CE /* ExtentionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8440E74025DF146F009204CE /* ExtentionCell.xib */; };
+		8440E74625DF226E009204CE /* TopStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440E74425DF226E009204CE /* TopStoryCell.swift */; };
+		8440E74725DF226E009204CE /* TopStoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8440E74525DF226E009204CE /* TopStoryCell.xib */; };
+		8440E75725DF319F009204CE /* LatestNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440E75525DF319F009204CE /* LatestNewsCell.swift */; };
+		8440E75825DF319F009204CE /* LatestNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8440E75625DF319F009204CE /* LatestNewsCell.xib */; };
 		84426C4C25DEB27B0055227B /* Daily.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84426C4B25DEB27B0055227B /* Daily.storyboard */; };
 		84426C5025DEB31F0055227B /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84426C4F25DEB31F0055227B /* DailyViewController.swift */; };
 		84426C5725DEB8C40055227B /* Bookmarks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84426C5525DEB8C40055227B /* Bookmarks.storyboard */; };
@@ -23,6 +29,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8440E73F25DF146F009204CE /* ExtentionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionCell.swift; sourceTree = "<group>"; };
+		8440E74025DF146F009204CE /* ExtentionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExtentionCell.xib; sourceTree = "<group>"; };
+		8440E74425DF226E009204CE /* TopStoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoryCell.swift; sourceTree = "<group>"; };
+		8440E74525DF226E009204CE /* TopStoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopStoryCell.xib; sourceTree = "<group>"; };
+		8440E75525DF319F009204CE /* LatestNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestNewsCell.swift; sourceTree = "<group>"; };
+		8440E75625DF319F009204CE /* LatestNewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LatestNewsCell.xib; sourceTree = "<group>"; };
 		84426C4B25DEB27B0055227B /* Daily.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Daily.storyboard; sourceTree = "<group>"; };
 		84426C4F25DEB31F0055227B /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
 		84426C5625DEB8C40055227B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = NewsApp/Base.lproj/Bookmarks.storyboard; sourceTree = "<group>"; };
@@ -51,9 +63,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8440E73E25DF13C8009204CE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8440E73F25DF146F009204CE /* ExtentionCell.swift */,
+				8440E74025DF146F009204CE /* ExtentionCell.xib */,
+				8440E74425DF226E009204CE /* TopStoryCell.swift */,
+				8440E74525DF226E009204CE /* TopStoryCell.xib */,
+				8440E75525DF319F009204CE /* LatestNewsCell.swift */,
+				8440E75625DF319F009204CE /* LatestNewsCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		84426C4E25DEB2FC0055227B /* Daily */ = {
 			isa = PBXGroup;
 			children = (
+				8440E73E25DF13C8009204CE /* Cells */,
 				84426C4B25DEB27B0055227B /* Daily.storyboard */,
 				84426C4F25DEB31F0055227B /* DailyViewController.swift */,
 			);
@@ -170,10 +196,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8440E75825DF319F009204CE /* LatestNewsCell.xib in Resources */,
+				8440E74225DF146F009204CE /* ExtentionCell.xib in Resources */,
 				8459B64C25DD7EBF0062FA03 /* LaunchScreen.storyboard in Resources */,
 				8459B64925DD7EBF0062FA03 /* Assets.xcassets in Resources */,
 				84426C4C25DEB27B0055227B /* Daily.storyboard in Resources */,
 				84426C6125DEBABE0055227B /* Settings.storyboard in Resources */,
+				8440E74725DF226E009204CE /* TopStoryCell.xib in Resources */,
 				8459B64425DD7EBD0062FA03 /* Main.storyboard in Resources */,
 				84426C5725DEB8C40055227B /* Bookmarks.storyboard in Resources */,
 			);
@@ -207,10 +236,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				84426C5B25DEB95A0055227B /* BookmarksViewController.swift in Sources */,
+				8440E75725DF319F009204CE /* LatestNewsCell.swift in Sources */,
 				8459B64125DD7EBD0062FA03 /* ViewController.swift in Sources */,
+				8440E74625DF226E009204CE /* TopStoryCell.swift in Sources */,
 				84426C6425DEBAE90055227B /* SettingsViewController.swift in Sources */,
 				8459B63D25DD7EBD0062FA03 /* AppDelegate.swift in Sources */,
 				8459B64725DD7EBD0062FA03 /* NewsApp.xcdatamodeld in Sources */,
+				8440E74125DF146F009204CE /* ExtentionCell.swift in Sources */,
 				8459B63F25DD7EBD0062FA03 /* SceneDelegate.swift in Sources */,
 				84426C5025DEB31F0055227B /* DailyViewController.swift in Sources */,
 			);
