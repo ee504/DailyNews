@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DailyViewController: UIViewController {
     @IBOutlet weak var dailyNewsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,20 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         dailyNewsTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
+
+extension DailyViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
@@ -42,7 +56,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return extentionCell!
         case 1:
             let topStoryCell = dailyNewsTableView.dequeueReusableCell(withIdentifier: TopStoryCell.identifier, for: indexPath) as? TopStoryCell
-            topStoryCell!.configure(preview: "TopStory", companyLogo: "BBCLogo", additionalInfo: "BBC News • 1hour ago", title: "Coronavirus: HSBC puts 35,000 job cuts on hold")
+            topStoryCell!.configure(preview: "LatestNews", companyLogo: "BBCLogo", additionalInfo: "BBC News • 1hour ago", title: "Coronavirus: HSBC puts 35,000 job cuts on hold")
             return topStoryCell!
         case 2:
             let extentionCell = dailyNewsTableView.dequeueReusableCell(withIdentifier: ExtentionCell.identifier, for: indexPath) as? ExtentionCell
@@ -54,14 +68,4 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return latestNewsCell!
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
