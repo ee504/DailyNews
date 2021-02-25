@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LatestNewsCell: UITableViewCell {
+class LatestNewsCell: UITableViewCell, NameCellProtocol {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var preview: UIImageView!
@@ -24,6 +24,12 @@ class LatestNewsCell: UITableViewCell {
         self.additionalInfo.text = additionalInfo
         self.title.text = title
     }
+    func configure(news: NewsData) {
+        self.preview.image = news.preview
+        self.companyLogo.image = news.companyLogo
+        self.additionalInfo.text = news.additionalInfo
+        self.title.text = news.title
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,6 +39,5 @@ class LatestNewsCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
+    }    
 }

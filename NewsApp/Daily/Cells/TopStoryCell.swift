@@ -24,10 +24,16 @@ class TopStoryCell: UITableViewCell {
         self.additionalInfo.text = additionalInfo
         self.title.text = title
     }
-    
+    func configure(news: NewsData) {
+        self.preview.image = news.preview
+        self.companyLogo.image = news.companyLogo
+        self.additionalInfo.text = news.additionalInfo
+        self.title.text = news.title
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        preview.layer.cornerRadius = 4.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,5 +41,4 @@ class TopStoryCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

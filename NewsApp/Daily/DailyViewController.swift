@@ -9,10 +9,13 @@ import UIKit
 
 class DailyViewController: UIViewController {
     @IBOutlet weak var dailyNewsTableView: UITableView!
+    private let dailyViewModel = DailyViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        dailyNewsTableView.register(
-            ExtentionCell.nib(), forCellReuseIdentifier: ExtentionCell.identifier)
+//        dailyViewModel.latestNews.bind { (_) in
+//            self.showTableView()
+//          }
+        dailyNewsTableView.register(ExtentionCell.nib(), forHeaderFooterViewReuseIdentifier: ExtentionCell.identifier)
         dailyNewsTableView.register(
             TopStoryCell.nib(), forCellReuseIdentifier: TopStoryCell.identifier)
         dailyNewsTableView.register(
@@ -34,38 +37,54 @@ class DailyViewController: UIViewController {
 
 }
 
-extension DailyViewController: UITableViewDelegate, UITableViewDataSource{
+extension DailyViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0, 2:
-            return 41
-        case 1:
-            return 306
-        default:
-            return 132
+        if let tableSelection = DailyViewModel.DailyTableSelection(rawValue: section) {
+            switch tableSelection {
+            case .top: return 1
+            case .latest: return dailyViewModel.latestNews?.count ?? 0
+            }
+        } else {
+            return 0
         }
+    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 41
+//        
+//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return DailyViewModel.DailyTableSelection.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: ExtentionCell.identifier) as! ExtentionCell
+        if let tableSelection = DailyViewModel.DailyTableSelection(rawValue: section) {
+            switch tableSelection {
+            case .top: headerView.configure(storyType: "Top Stories", link: "More")
+            case .latest: headerView.configure(storyType: "Latest News", link: "See All")
+            }
+        }
+        return headerView
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let extentionCell = dailyNewsTableView.dequeueReusableCell(withIdentifier: ExtentionCell.identifier, for: indexPath) as? ExtentionCell
-            extentionCell!.configure(storyType: "Top Stories", link: "More")
-            return extentionCell!
-        case 1:
-            let topStoryCell = dailyNewsTableView.dequeueReusableCell(withIdentifier: TopStoryCell.identifier, for: indexPath) as? TopStoryCell
-            topStoryCell!.configure(preview: "LatestNews", companyLogo: "BBCLogo", additionalInfo: "BBC News • 1hour ago", title: "Coronavirus: HSBC puts 35,000 job cuts on hold")
-            return topStoryCell!
-        case 2:
-            let extentionCell = dailyNewsTableView.dequeueReusableCell(withIdentifier: ExtentionCell.identifier, for: indexPath) as? ExtentionCell
-            extentionCell!.configure(storyType: "Latest News", link: "See All")
-            return extentionCell!
-        default:
-            let latestNewsCell = dailyNewsTableView.dequeueReusableCell(withIdentifier: LatestNewsCell.identifier, for: indexPath) as? LatestNewsCell
-            latestNewsCell!.configure(preview: "LatestNews", companyLogo: "BBCLogo", additionalInfo: "The New York Times • 2 hour ago", title: "Analysts Aren’t Buying the Sterling Rebound")
-            return latestNewsCell!
+        if let tableSelection = DailyViewModel.DailyTableSelection(rawValue: indexPath.section) {
+            switch tableSelection {
+            case .top:
+                let topStoryCell =
+                    dailyNewsTableView.dequeueReusableCell(
+                        withIdentifier: TopStoryCell.identifier,
+                        for: indexPath)
+                    as? TopStoryCell
+                topStoryCell!.configure(news: dailyViewModel.topStory!)
+                return topStoryCell!
+            case .latest:
+                let latestNewsCell = dailyNewsTableView.dequeueReusableCell(withIdentifier: LatestNewsCell.identifier, for: indexPath) as? LatestNewsCell
+                latestNewsCell!.configure(news: dailyViewModel.latestNews![indexPath.row])
+                return latestNewsCell!
+            }
         }
+        
+        return UITableViewCell()
     }
 }

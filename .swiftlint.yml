@@ -1,0 +1,7 @@
+disabled_rules:
+  - trailing_whitespace
+  - statement_position
+  - force_cast
+  - line_length
+  - vertical_whitespace
+  - trailing_newline
