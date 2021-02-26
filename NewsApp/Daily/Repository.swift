@@ -38,4 +38,7 @@ class Repository {
     func getLatestNews() -> [NewsData] {
         return latestNews
     }
+    //func getLatestNewsAF() -> [NewsData] {
+        //return NewsHandler.init().getLatestAppleNews(2)
+    //}
 }

@@ -14,4 +14,8 @@ struct NewsData {
     var title: String
     var additionalInfo: String
     var isBookmark = false
+    
+//    init(from decoder: Decoder) throws {
+//
+//    }
 }

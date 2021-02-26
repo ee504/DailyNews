@@ -30,6 +30,17 @@ class LatestNewsCell: UITableViewCell, NameCellProtocol {
         self.additionalInfo.text = news.additionalInfo
         self.title.text = news.title
     }
+    func configure(news: AFTestData) {
+        print(news)
+        if let imageUrl = news.urlToImage {
+            self.preview.downloaded(from: imageUrl)
+        } else {
+            self.preview.image = UIImage(named: "LatestNews")!
+        }
+        self.companyLogo.image = UIImage(named: "BBCLogo")!
+        self.additionalInfo.text = news.author
+        self.title.text = news.title
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -40,4 +51,25 @@ class LatestNewsCell: UITableViewCell, NameCellProtocol {
 
         // Configure the view for the selected state
     }    
+}
+
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+            }
+        }.resume()
+    }
+    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloaded(from: url, contentMode: mode)
+    }
 }

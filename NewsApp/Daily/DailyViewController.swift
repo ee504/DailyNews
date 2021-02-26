@@ -6,15 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 class DailyViewController: UIViewController {
     @IBOutlet weak var dailyNewsTableView: UITableView!
     private let dailyViewModel = DailyViewModel()
+    private var cancelable = Set<AnyCancellable>()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        dailyViewModel.latestNews.bind { (_) in
-//            self.showTableView()
-//          }
         dailyNewsTableView.register(ExtentionCell.nib(), forHeaderFooterViewReuseIdentifier: ExtentionCell.identifier)
         dailyNewsTableView.register(
             TopStoryCell.nib(), forCellReuseIdentifier: TopStoryCell.identifier)
@@ -22,7 +21,19 @@ class DailyViewController: UIViewController {
             LatestNewsCell.nib(), forCellReuseIdentifier: LatestNewsCell.identifier)
         dailyNewsTableView.delegate = self
         dailyNewsTableView.dataSource = self
-        // Do any additional setup after loading the view.
+        
+        binding()
+    }
+    
+    private func binding(){
+        dailyViewModel.$latestNewsAF
+            .sink(receiveValue: {[weak self] latestNewsAF in
+                //self?.dailyNewsTableView.reloadData()
+                print("reload data")
+                print("some size: \(self?.dailyViewModel.latestNewsAF.articles.count)")
+                self?.dailyNewsTableView.reloadData()
+            })
+            .store(in: &cancelable)
     }
     
     /*
@@ -42,16 +53,15 @@ extension DailyViewController: UITableViewDelegate, UITableViewDataSource {
         if let tableSelection = DailyViewModel.DailyTableSelection(rawValue: section) {
             switch tableSelection {
             case .top: return 1
-            case .latest: return dailyViewModel.latestNews?.count ?? 0
+            case .latest:
+                print("article size: \(dailyViewModel.latestNewsAF.articles.count)")
+                return dailyViewModel.latestNewsAF.articles.count
+            //case .latest: return dailyViewModel.latestNews?.count ?? 0
             }
         } else {
             return 0
         }
     }
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 41
-//        
-//    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return DailyViewModel.DailyTableSelection.allCases.count
     }
@@ -79,9 +89,11 @@ extension DailyViewController: UITableViewDelegate, UITableViewDataSource {
                 topStoryCell!.configure(news: dailyViewModel.topStory!)
                 return topStoryCell!
             case .latest:
-                let latestNewsCell = dailyNewsTableView.dequeueReusableCell(withIdentifier: LatestNewsCell.identifier, for: indexPath) as? LatestNewsCell
-                latestNewsCell!.configure(news: dailyViewModel.latestNews![indexPath.row])
-                return latestNewsCell!
+                print("newline")
+                print(indexPath.row)
+                let latestNewsCell = dailyNewsTableView.dequeueReusableCell(withIdentifier: LatestNewsCell.identifier, for: indexPath) as! LatestNewsCell
+                latestNewsCell.configure(news: dailyViewModel.latestNewsAF.articles[indexPath.row])
+                return latestNewsCell
             }
         }
         
